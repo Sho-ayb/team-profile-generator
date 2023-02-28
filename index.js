@@ -192,6 +192,21 @@ const questions = [
   },
 ];
 
+// function to write html markup output to file
+
+const writeFile = (rawData) => {
+  const data = Buffer.from(rawData, "utf8");
+
+  fs.writeFile(outputPath, data, (err) => {
+    if (err) console.log(err);
+    else {
+      console.log("File written to team.html successfully");
+      console.log("Please open file stored in output directory");
+      console.log("The file has the following contents");
+    }
+  });
+};
+
 // function to bring up application menu
 
 const menuOpts = [
@@ -267,10 +282,15 @@ const buildTeam = () => {
   console.log("Team Built");
   console.log(team);
 
+  // passing the array of objects to render function: returns html markup
   const html = render(team);
 
-  console.log(html);
+  // writing html markup to a html file named 'team.html' stored to output directory
+
+  writeFile(html);
 };
+
+// an async iife function to start the program once executed
 
 (async function () {
   const managerQs = questions[0]["manager"];
