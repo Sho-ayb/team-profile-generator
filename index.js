@@ -266,12 +266,14 @@ const addIntern = async () => {
 const buildTeam = () => {
   console.log("Team Built");
   console.log(team);
+
+  const html = render(team);
+
+  console.log(html);
 };
 
 (async function () {
   const managerQs = questions[0]["manager"];
-
-  console.log(managerQs);
 
   const {
     manager__name,
@@ -295,8 +297,6 @@ const buildTeam = () => {
       manager__office__number
     )
   );
-
-  console.log("team: ", team);
 
   const menuOpt = await inquirer.prompt(menuOpts);
 
