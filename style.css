@@ -1,8 +1,6 @@
 :root {
   --darker-red: #ad0230;
   --reddish-orange: #fa0546;
-  --pinkish-red: #ff1f5a;
-  --greenish: #00ad17;
   --lime-green: #05fa25;
   --grey-blue: #7f65ad;
 }
@@ -27,5 +25,5 @@
 }
 
 .card-body {
-  background-color: var(--greenish);
+  background-color: var(--lime-green);
 }
