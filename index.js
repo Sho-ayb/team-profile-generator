@@ -192,14 +192,80 @@ const questions = [
   },
 ];
 
+// function to bring up application menu
+
 const menuOpts = [
   {
     type: "list",
     name: "menu__options",
     choices: ["ADD AN ENGINEER", "ADD AN INTERN", "BUILD TEAM"],
-    default: () => {},
+    default: "BUILD TEAM",
   },
 ];
+
+// function to refactor switch statement
+
+const menu = (choice) => {
+  console.log(choice.menu__options);
+
+  switch (choice.menu__options) {
+    case "ADD AN ENGINEER":
+      addEngineer();
+      break;
+    case "ADD AN INTERN":
+      addIntern();
+      break;
+    default:
+      buildTeam();
+  }
+};
+
+// function to add an engineer
+
+const addEngineer = async () => {
+  const engineerQs = questions[0]["engineer"];
+
+  console.log(engineerQs);
+
+  const { engineer__name, engineer__id, engineer__email, engineer__github } =
+    await inquirer.prompt(engineerQs);
+
+  team.push(
+    new Engineer(
+      engineer__name,
+      engineer__id,
+      engineer__email,
+      engineer__github
+    )
+  );
+
+  const menuOpt = await inquirer.prompt(menuOpts);
+
+  menu(menuOpt);
+};
+
+const addIntern = async () => {
+  const internQs = questions[0]["intern"];
+
+  console.log(internQs);
+
+  const { intern__name, intern__id, intern__email, intern__school } =
+    await inquirer.prompt(internQs);
+
+  team.push(
+    new Intern(intern__name, intern__id, intern__email, intern__school)
+  );
+
+  const menuOpt = await inquirer.prompt(menuOpts);
+
+  menu(menuOpt);
+};
+
+// function to build team
+
+const buildTeam = () => {
+  console.log("Team Built");
+};
 
 (async function () {
   const managerQs = questions[0]["manager"];
@@ -235,15 +301,6 @@ const menuOpts = [
 
   console.log(menuOpt);
 
-  switch (menuOpt) {
-    case "ADD AN ENGINEER":
-      addEngineer();
-      break;
-    case "ADD AN INTERN":
-      addIntern();
-      break;
-    case "BUILD TEAM":
-      buildTeam();
-      break;
-  }
+  // invoking the menu function
+  menu(menuOpt);
 })();
