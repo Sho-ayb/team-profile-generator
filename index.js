@@ -265,6 +265,7 @@ const addIntern = async () => {
 
 const buildTeam = () => {
   console.log("Team Built");
+  console.log(team);
 };
 
 (async function () {
