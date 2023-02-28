@@ -45,6 +45,10 @@ on selecting finish building team, a html file is generated and saved to output 
 
 */
 
+// creating an empty array to store the team objects
+
+const team = [];
+
 // creating array of objects to store all the questions to ask the user
 
 const questions = [
@@ -197,23 +201,6 @@ const menuOpts = [
   },
 ];
 
-// extracting the object to console
-// console.log(questions[0]["manager"]);
-
-// function to display the menu options to prompt the user according to the option chosen
-
-// const askPrompt = async () => {
-//   const managerQs = questions[0]["manager"];
-
-//   console.log(managerQs[0]);
-
-//   const { managerName } = await inquirer.prompt([managerQs[0]]);
-
-//   console.log(managerName);
-// };
-
-// askPrompt();
-
 (async function () {
   const managerQs = questions[0]["manager"];
 
@@ -230,4 +217,33 @@ const menuOpts = [
   console.log("id: ", manager__id);
   console.log("email: ", manager__email);
   console.log("office number: ", manager__office__number);
+
+  // pushing new object to team array of objects
+
+  team.push(
+    new Manager(
+      manager__name,
+      manager__id,
+      manager__email,
+      manager__office__number
+    )
+  );
+
+  console.log("team: ", team);
+
+  const menuOpt = await inquirer.prompt(menuOpts);
+
+  console.log(menuOpt);
+
+  switch (menuOpt) {
+    case "ADD AN ENGINEER":
+      addEngineer();
+      break;
+    case "ADD AN INTERN":
+      addIntern();
+      break;
+    case "BUILD TEAM":
+      buildTeam();
+      break;
+  }
 })();
