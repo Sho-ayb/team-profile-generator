@@ -1,0 +1,31 @@
+:root {
+  --darker-red: #ad0230;
+  --reddish-orange: #fa0546;
+  --pinkish-red: #ff1f5a;
+  --greenish: #00ad17;
+  --lime-green: #05fa25;
+  --grey-blue: #7f65ad;
+}
+
+.jumbotron {
+  background-color: var(--darker-red);
+}
+
+.jumbotron h1 {
+  color: white;
+}
+
+.card-header {
+  background-color: var(--reddish-orange);
+}
+
+.card-title {
+  color: white;
+}
+.card-header h3 {
+  color: var(--grey-blue);
+}
+
+.card-body {
+  background-color: var(--greenish);
+}
