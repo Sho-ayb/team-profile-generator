@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/Sho-ayb/team-profile-generator#readme",
   "dependencies": {
-    "inquirer": "^6.5.0"
+    "inquirer": "^8.2.5"
   }
 }

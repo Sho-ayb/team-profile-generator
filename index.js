@@ -53,7 +53,7 @@ const questions = [
       {
         type: "input",
         name: "manager__name",
-        message: "Enter your full name",
+        message: "Enter your full name ",
         validate(name) {
           if (name.includes(" ")) {
             return true;
@@ -65,13 +65,13 @@ const questions = [
 
       {
         type: "input",
-        id: "manager__id",
+        name: "manager__id",
         message: "Enter your Employee Id",
       },
 
       {
         type: "input",
-        email: "manager__email",
+        name: "manager__email",
         message: "Enter your Email Address",
         default: () => {},
         validate(email) {
@@ -80,17 +80,17 @@ const questions = [
           );
 
           if (valid) {
-            console.log("Valid Email Entered");
+            console.log("\n Valid Email Entered");
             return true;
           } else {
-            console.log("Enter a valid Email address");
+            console.log("\n Enter a valid Email address");
             return false;
           }
         },
       },
       {
         type: "input",
-        officeNumber: "manager__office__number",
+        name: "manager__office__number",
         message: "Enter your office number",
       },
     ],
@@ -110,13 +110,13 @@ const questions = [
       },
       {
         type: "input",
-        id: "engineer__id",
+        name: "engineer__id",
         message: "Enter the Engineers Id",
       },
 
       {
         type: "input",
-        email: "engineer__email",
+        name: "engineer__email",
         message: "Enter the Engineers Email Address",
         default: () => {},
         validate(email) {
@@ -125,7 +125,7 @@ const questions = [
           );
 
           if (valid) {
-            console.log("Valid Email Entered");
+            console.log("\n Valid Email Entered");
             return true;
           } else {
             console.log("Enter a valid Email address");
@@ -136,7 +136,7 @@ const questions = [
 
       {
         type: "input",
-        github: "engineer__github",
+        name: "engineer__github",
         message: "Enter the Engineers Github username",
       },
     ],
@@ -156,13 +156,13 @@ const questions = [
       },
       {
         type: "input",
-        id: "intern__id",
+        name: "intern__id",
         message: "Enter the Interns Id",
       },
 
       {
         type: "input",
-        email: "intern__email",
+        name: "intern__email",
         message: "Enter the Interns Email Address",
         default: () => {},
         validate(email) {
@@ -181,9 +181,53 @@ const questions = [
       },
       {
         type: "input",
-        school: "intern__school",
+        name: "intern__school",
         message: "Enter the Interns School",
       },
     ],
   },
 ];
+
+const menuOpts = [
+  {
+    type: "list",
+    name: "menu__options",
+    choices: ["ADD AN ENGINEER", "ADD AN INTERN", "BUILD TEAM"],
+    default: () => {},
+  },
+];
+
+// extracting the object to console
+// console.log(questions[0]["manager"]);
+
+// function to display the menu options to prompt the user according to the option chosen
+
+// const askPrompt = async () => {
+//   const managerQs = questions[0]["manager"];
+
+//   console.log(managerQs[0]);
+
+//   const { managerName } = await inquirer.prompt([managerQs[0]]);
+
+//   console.log(managerName);
+// };
+
+// askPrompt();
+
+(async function () {
+  const managerQs = questions[0]["manager"];
+
+  console.log(managerQs);
+
+  const {
+    manager__name,
+    manager__id,
+    manager__email,
+    manager__office__number,
+  } = await inquirer.prompt(managerQs);
+
+  console.log("name: ", manager__name);
+  console.log("id: ", manager__id);
+  console.log("email: ", manager__email);
+  console.log("office number: ", manager__office__number);
+})();
